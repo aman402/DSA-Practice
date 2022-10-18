@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+//Decimal to binary representation
+
+#define countbit(x) __builtin_popcount(x)
+#define ll long long
+
+int main()
+{
+    int t = 1;
+    // cin>>t;
+    while(t--)
+    {
+        int n, i = 0;
+        stack<int> mystack;
+        cin>>n;
+        while(n != 0)
+        {
+            if(n & 1<<i)
+            {
+                n -= pow(2, i);
+                mystack.push(1);
+            }
+            else
+            {
+                mystack.push(0);
+            }
+            ++i;
+        }
+        while(!mystack.empty())
+        {
+            cout<<mystack.top();
+            mystack.pop();
+        }
+    }
+    return 0;
+}
