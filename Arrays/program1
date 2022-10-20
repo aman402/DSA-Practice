@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// Merge two sorted arrays in O(1) space complexity
+//Merge two sorted arrays in O(1) space complexity
 
 #define countbit(x) __builtin_popcount(x)
 #define ll long long
@@ -33,9 +33,13 @@ void print(vector<int>& arr1, vector<int>& arr2, int m, int n)
     {
         cout<<arr2[i]<<" ";
     }
+    cout<<endl;
 }
 
-//Used Insertion Sort in arr2
+//Compare every element of arr1 to smallest element of arr2, if smallest element of arr2 is smaller than
+//ith element of arr1 than swap the two elements and then use insertion sort in arr2 to place the swapped
+//swapped element in its correct position, by doing this we will ensure that arr2[0] is always the smallest
+//element of arr2.
 //Time complexity O(m*n)
 void merge_unoptimized(vector<int>& arr1, vector<int>& arr2, int m, int n)
 {
@@ -54,6 +58,29 @@ void merge_unoptimized(vector<int>& arr1, vector<int>& arr2, int m, int n)
     }
 }
 
+//Put first m smallest elements out of all given elements in arr1 and all the rest elements in arr2 regardless
+//of whether the arrays are sorted or not, once this is done then sort both arrays together in last
+//Time complexity O(m + n + mlogm + nlogn), this is lesser than O(m*n)
+void merge_optimized(vector<int>& arr1, vector<int>& arr2, int m, int n)
+{
+    int k = m - 1, j = 0, i = 0;
+    while(i <= k && j < n)
+    {
+        if(arr2[j] < arr1[i])
+        {
+            swap(arr2[j], arr1[k]);
+            ++j;
+            --k;
+        }
+        else
+        {
+            ++i;
+        }
+    }
+    sort(arr1.begin(), arr1.begin() + m);
+    sort(arr2.begin(), arr2.begin() + n);
+}
+
 
 int main()
 {
@@ -65,7 +92,8 @@ int main()
         cin>>m>>n;
         vector<int> arr1, arr2;
         input(arr1, arr2, m, n);
-        merge_unoptimized(arr1, arr2, m, n);
+        // merge_unoptimized(arr1, arr2, m, n);
+        merge_optimized(arr1, arr2, m, n);
         print(arr1, arr2, m, n);
     }
     return 0;
