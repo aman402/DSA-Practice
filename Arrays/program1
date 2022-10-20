@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// Merge two sorted arrays in O(1) space complexity
 
 #define countbit(x) __builtin_popcount(x)
 #define ll long long
