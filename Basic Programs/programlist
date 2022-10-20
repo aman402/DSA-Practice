@@ -1,1 +1,4 @@
 List of programs corresponding to their index
+program1 - Display the optimal number of moves required to solve Hanoi Tower with number of disks of N
+program2 - Count the number of '1' bits in the given integer
+program3 - Decimal integer to binary representation
