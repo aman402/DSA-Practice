@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-//Decimal to binary representation
+//Decimal integer to binary representation
 
 #define countbit(x) __builtin_popcount(x)
 #define ll long long
