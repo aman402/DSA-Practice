@@ -1,2 +1,0 @@
-List of programs corresponding to their index
-program1 - Merge two sorted arrays in O(1) space complexity
